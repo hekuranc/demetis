@@ -1,0 +1,70 @@
+.dashboard-card {
+  @apply relative overflow-hidden;
+}
+
+.dashboard-card .card-header {
+  @apply py-2 px-3;
+}
+
+.dashboard-card .card-content {
+  @apply px-3 pb-3;
+}
+
+.hover-trigger .hover-target {
+  @apply opacity-0 transition-opacity;
+}
+
+.hover-trigger:hover .hover-target {
+  @apply opacity-100;
+}
+
+/* Custom scrollbar for card content */
+.card-content::-webkit-scrollbar {
+  @apply w-1.5;
+}
+
+.card-content::-webkit-scrollbar-track {
+  @apply bg-transparent rounded-full;
+}
+
+.card-content::-webkit-scrollbar-thumb {
+  @apply bg-muted rounded-full hover:bg-muted-foreground/20 transition-colors;
+}
+
+/* Compact text utilities */
+.text-compact-xs {
+  @apply text-[10px] leading-4;
+}
+
+.text-compact-sm {
+  @apply text-xs leading-4;
+}
+
+.text-compact-base {
+  @apply text-sm leading-5;
+}
+
+.text-compact-lg {
+  @apply text-base leading-6;
+}
+
+/* Compact spacing utilities */
+.space-y-compact {
+  @apply space-y-1.5;
+}
+
+.gap-compact {
+  @apply gap-1.5;
+}
+
+.p-compact {
+  @apply p-2;
+}
+
+.py-compact {
+  @apply py-1.5;
+}
+
+.px-compact {
+  @apply px-2;
+}
