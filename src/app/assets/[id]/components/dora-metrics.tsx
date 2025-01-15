@@ -39,29 +39,29 @@ export function DORAMetrics({ metrics }: DORAMetricsProps) {
   }
 
   const MetricRow = ({ title, metric }: { title: string; metric: DORAMetric }) => (
-    <div className="flex items-center justify-between py-3 border-b last:border-0">
+    <div className="flex items-center justify-between py-2 border-b last:border-0">
       <div>
-        <div className="font-medium mb-0.5">{title}</div>
-        <div className="text-sm text-muted-foreground">{metric.value}</div>
+        <div className="text-sm font-medium">{title}</div>
+        <div className="text-xs text-muted-foreground mt-0.5">{metric.value}</div>
       </div>
       <div className="text-right">
-        <div className="flex items-center gap-2 justify-end mb-0.5">
-          <span className={cn("font-bold", getScoreColor(metric.score))}>
+        <div className="flex items-center gap-1.5 justify-end">
+          <span className={cn("font-bold text-sm", getScoreColor(metric.score))}>
             {metric.score}
           </span>
           {getTrendIcon(metric.trend)}
         </div>
-        <div className="text-xs text-muted-foreground">{metric.industry}</div>
+        <div className="text-[10px] text-muted-foreground mt-0.5">{metric.industry}</div>
       </div>
     </div>
   )
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="text-lg font-semibold">DORA Metrics</CardTitle>
+      <CardHeader className="pb-1 pt-3 px-3">
+        <CardTitle className="text-sm font-medium">DORA Metrics</CardTitle>
       </CardHeader>
-      <CardContent className="pt-0">
+      <CardContent className="p-3 pt-0">
         <MetricRow
           title="Deployment Frequency"
           metric={metrics.deploymentFrequency}

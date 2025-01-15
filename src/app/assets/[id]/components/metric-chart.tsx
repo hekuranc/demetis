@@ -27,7 +27,7 @@ export function MetricChart({ metric }: MetricChartProps) {
 
   return (
     <Card>
-      <CardHeader className="pb-2">
+      <CardHeader className="pb-1 pt-3 px-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-medium">{metric.name}</CardTitle>
           <div className="flex items-center gap-2">
@@ -38,12 +38,12 @@ export function MetricChart({ metric }: MetricChartProps) {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="pt-0">
-        <div className="h-[120px]">
+      <CardContent className="p-3 pt-0">
+        <div className="h-[100px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={metric.history}
-              margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
+              margin={{ top: 2, right: 2, left: 2, bottom: 2 }}
             >
               <defs>
                 <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">

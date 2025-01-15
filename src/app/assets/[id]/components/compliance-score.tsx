@@ -26,12 +26,12 @@ export function ComplianceScore({ score }: ComplianceScoreProps) {
 
   return (
     <Card>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base font-medium">{score.framework}</CardTitle>
+      <CardHeader className="pb-1 pt-3 px-3">
+        <CardTitle className="text-sm font-medium">{score.framework}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3 p-3 pt-0">
         <div className="flex items-center justify-between">
-          <div className="text-4xl font-bold">
+          <div className="text-3xl font-bold">
             <span className={getScoreColor(score.score)}>{score.score}</span>
             <span className="text-base text-muted-foreground">/100</span>
           </div>
@@ -42,9 +42,9 @@ export function ComplianceScore({ score }: ComplianceScoreProps) {
             {score.status.replace('_', ' ')}
           </span>
         </div>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-2 gap-3 text-xs">
           <div>
-            <div className="text-muted-foreground">Last Assessment</div>
+            <div className="text-muted-foreground">Assessed</div>
             <div className="font-medium">{score.lastAssessment}</div>
           </div>
           <div>

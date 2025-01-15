@@ -44,9 +44,9 @@ export function SecurityAlerts({ alerts }: SecurityAlertsProps) {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="pb-1 pt-3 px-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg font-semibold">Security Alerts</CardTitle>
+          <CardTitle className="text-sm font-medium">Security Alerts</CardTitle>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5">
               <div className="h-2 w-2 rounded-full bg-red-500" />
@@ -63,16 +63,16 @@ export function SecurityAlerts({ alerts }: SecurityAlertsProps) {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-2 p-3 pt-0">
         {alerts.map((alert) => (
           <div
             key={alert.id}
-            className="flex items-start gap-3 p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
+            className="flex items-start gap-2 p-2 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
           >
-            <div className="mt-1">{getStatusIcon(alert.status)}</div>
+            <div className="mt-0.5">{getStatusIcon(alert.status)}</div>
             <div className="flex-1 space-y-1">
-              <div className="flex items-center justify-between">
-                <div className="font-medium">{alert.description}</div>
+              <div className="flex items-center justify-between gap-3">
+                <div className="text-sm font-medium">{alert.description}</div>
                 <span className={cn(
                   "px-2 py-0.5 rounded-full text-xs font-medium",
                   getSeverityColor(alert.severity)
@@ -80,7 +80,7 @@ export function SecurityAlerts({ alerts }: SecurityAlertsProps) {
                   {alert.severity}
                 </span>
               </div>
-              <div className="flex items-center gap-3 text-sm">
+              <div className="flex items-center gap-2 text-xs">
                 <span className="text-muted-foreground">{alert.category}</span>
                 <span className="text-muted-foreground">•</span>
                 <span className="text-muted-foreground">{formatDate(alert.timestamp)}</span>

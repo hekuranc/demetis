@@ -32,8 +32,8 @@ export default function AssetDetailPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-6 lg:px-8">
-        <div className="flex items-center gap-4 mb-6">
+      <div className="container mx-auto px-4 py-4 lg:px-6">
+        <div className="flex items-center gap-3 mb-4">
           <Link href="/assets">
             <Button variant="outline" size="sm">
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -47,12 +47,12 @@ export default function AssetDetailPage() {
         </div>
 
         {/* Asset Information */}
-        <div className="grid gap-6 mb-6">
+        <div className="grid gap-4 mb-4">
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Asset Information</CardTitle>
             </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CardContent className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
                 <div className="text-sm font-medium text-muted-foreground mb-1">Type</div>
                 <div className="capitalize font-medium">{asset.type}</div>
@@ -88,10 +88,10 @@ export default function AssetDetailPage() {
         </div>
 
         {/* Observability Metrics */}
-        <div className="grid gap-6 mb-6">
+        <div className="grid gap-4 mb-4">
           <div>
-            <h2 className="text-lg font-semibold mb-4">Observability</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <h2 className="text-sm font-medium text-muted-foreground mb-3">Observability</h2>
+            <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
               {mockObservabilityMetrics.map((metric) => (
                 <MetricChart key={metric.name} metric={metric} />
               ))}
@@ -100,23 +100,23 @@ export default function AssetDetailPage() {
         </div>
 
         {/* Compliance and DORA */}
-        <div className="grid gap-6 mb-6 lg:grid-cols-2">
+        <div className="grid gap-4 mb-4 lg:grid-cols-2">
           <div>
-            <h2 className="text-lg font-semibold mb-4">Compliance</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <h2 className="text-sm font-medium text-muted-foreground mb-3">Compliance</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {mockComplianceScores.map((score) => (
                 <ComplianceScore key={score.framework} score={score} />
               ))}
             </div>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-4">DORA Metrics</h2>
+            <h2 className="text-sm font-medium text-muted-foreground mb-3">DORA Metrics</h2>
             <DORAMetrics metrics={mockDORAMetrics} />
           </div>
         </div>
 
         {/* Security Alerts */}
-        <div className="grid gap-6">
+        <div className="grid gap-4">
           <SecurityAlerts alerts={mockSecurityAlerts} />
         </div>
       </div>
