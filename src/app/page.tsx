@@ -195,9 +195,6 @@ export default function LoginPage() {
             </form>
           </Form>
           <div className="mt-4 text-center space-y-0.5">
-            <p className="text-xs text-muted-foreground">
-              Protected by enterprise-grade security
-            </p>
             <div className="flex items-center justify-center gap-1">
               <div className="h-1 w-1 rounded-full bg-green-500" />
               <span className="text-[10px] text-muted-foreground">
