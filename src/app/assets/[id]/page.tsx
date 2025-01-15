@@ -1,39 +1,16 @@
 "use client"
 
 import { useParams } from "next/navigation"
-import { ArrowLeft, Clock, Globe, Activity } from "lucide-react"
+import { ArrowLeft, Clock, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import { mockAssets } from "@/lib/data/mock-assets"
-
-// Mock events for the timeline
-const mockEvents = [
-  {
-    id: 1,
-    date: "2024-01-15",
-    type: "status",
-    description: "Asset successfully integrated",
-  },
-  {
-    id: 2,
-    date: "2024-01-14",
-    type: "security",
-    description: "Security scan completed - No vulnerabilities found",
-  },
-  {
-    id: 3,
-    date: "2024-01-13",
-    type: "update",
-    description: "System updates installed",
-  },
-  {
-    id: 4,
-    date: "2024-01-12",
-    type: "alert",
-    description: "High CPU usage detected",
-  },
-]
+import { mockComplianceScores, mockDORAMetrics, mockObservabilityMetrics, mockSecurityAlerts } from "@/lib/data/mock-asset-details"
+import { MetricChart } from "./components/metric-chart"
+import { ComplianceScore } from "./components/compliance-score"
+import { DORAMetrics } from "./components/dora-metrics"
+import { SecurityAlerts } from "./components/security-alerts"
 
 export default function AssetDetailPage() {
   const params = useParams()
@@ -69,109 +46,78 @@ export default function AssetDetailPage() {
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Asset Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+        {/* Asset Information */}
+        <div className="grid gap-6 mb-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Asset Information</CardTitle>
+            </CardHeader>
+            <CardContent className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Type</div>
+                <div className="capitalize font-medium">{asset.type}</div>
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Status</div>
                 <div>
-                  <div className="text-sm font-medium text-muted-foreground mb-1">Type</div>
-                  <div className="capitalize">{asset.type}</div>
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    asset.status === "integrated"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-yellow-100 text-yellow-800"
+                  }`}>
+                    {asset.status}
+                  </span>
                 </div>
-                <div>
-                  <div className="text-sm font-medium text-muted-foreground mb-1">Status</div>
-                  <div>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      asset.status === "integrated"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-yellow-100 text-yellow-800"
-                    }`}>
-                      {asset.status}
-                    </span>
-                  </div>
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Last Seen</div>
+                <div className="flex items-center gap-2 font-medium">
+                  <Clock className="h-4 w-4 text-muted-foreground" />
+                  {asset.lastSeen}
                 </div>
-                <div>
-                  <div className="text-sm font-medium text-muted-foreground mb-1">Last Seen</div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-muted-foreground" />
-                    {asset.lastSeen}
-                  </div>
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Location</div>
+                <div className="flex items-center gap-2 font-medium">
+                  <Globe className="h-4 w-4 text-muted-foreground" />
+                  {asset.location}
                 </div>
-                <div>
-                  <div className="text-sm font-medium text-muted-foreground mb-1">Location</div>
-                  <div className="flex items-center gap-2">
-                    <Globe className="h-4 w-4 text-muted-foreground" />
-                    {asset.location}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Security Status</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium">Vulnerabilities</div>
-                  <div className="text-green-600 font-medium">None detected</div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium">Last Security Scan</div>
-                  <div>2024-01-14</div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium">Compliance Status</div>
-                  <div className="text-green-600 font-medium">Compliant</div>
-                </div>
-              </CardContent>
-            </Card>
+        {/* Observability Metrics */}
+        <div className="grid gap-6 mb-6">
+          <div>
+            <h2 className="text-lg font-semibold mb-4">Observability</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {mockObservabilityMetrics.map((metric) => (
+                <MetricChart key={metric.name} metric={metric} />
+              ))}
+            </div>
           </div>
+        </div>
 
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Performance Metrics</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium">Uptime</div>
-                  <div>99.9%</div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium">Response Time</div>
-                  <div>120ms</div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium">Resource Utilization</div>
-                  <div>65%</div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Recent Events</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {mockEvents.map((event) => (
-                    <div key={event.id} className="flex gap-4">
-                      <div className="mt-1">
-                        <Activity className="h-4 w-4 text-muted-foreground" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium">{event.description}</div>
-                        <div className="text-sm text-muted-foreground">{event.date}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+        {/* Compliance and DORA */}
+        <div className="grid gap-6 mb-6 lg:grid-cols-2">
+          <div>
+            <h2 className="text-lg font-semibold mb-4">Compliance</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {mockComplianceScores.map((score) => (
+                <ComplianceScore key={score.framework} score={score} />
+              ))}
+            </div>
           </div>
+          <div>
+            <h2 className="text-lg font-semibold mb-4">DORA Metrics</h2>
+            <DORAMetrics metrics={mockDORAMetrics} />
+          </div>
+        </div>
+
+        {/* Security Alerts */}
+        <div className="grid gap-6">
+          <SecurityAlerts alerts={mockSecurityAlerts} />
         </div>
       </div>
     </div>
