@@ -6,9 +6,9 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SecureIoT | Next-Gen IoT Security Platform",
-  description: "Enterprise-grade cybersecurity solutions powered by AI to protect your IoT infrastructure from emerging threats in real-time.",
-  keywords: "IoT security, cybersecurity, AI security, enterprise security, device protection",
+  title: "Q | Quantum-Resistant Document Security",
+  description: "Future-proof your sensitive documents with NIST-approved post-quantum cryptography. Secure today, quantum-proof tomorrow.",
+  keywords: "post-quantum cryptography, document security, quantum-resistant, digital signatures, encryption, NIST PQC",
 };
 
 export default function RootLayout({

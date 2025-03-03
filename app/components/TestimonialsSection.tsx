@@ -5,7 +5,7 @@ import { FaQuoteLeft, FaUniversity, FaHospital, FaLandmark } from "react-icons/f
 const testimonials = [
   {
     quote: "Q's post-quantum document signing solution has been essential for our long-term data protection strategy. Their implementation of NIST-approved algorithms gives us confidence that our sensitive documents will remain secure even in the quantum era.",
-    author: "Sarah Chen",
+    author: "Leila Taghizadeh",
     title: "Chief Information Security Officer",
     company: "Global Financial Services",
     icon: FaLandmark,
