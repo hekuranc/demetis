@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@nextui-org/react";
-import { FaFileSignature, FaKey, FaExclamationTriangle, FaCheckCircle, FaChartLine, FaFileAlt, FaHistory } from "react-icons/fa";
+import { FaFileSignature, FaKey, FaExclamationTriangle, FaFileAlt, FaHistory } from "react-icons/fa";
 
 export function SecurityDashboard() {
   return (

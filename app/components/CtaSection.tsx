@@ -30,7 +30,7 @@ export function CtaSection() {
               </p>
               
               <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                Get started with Q in minutes. Protect your sensitive documents with NIST-approved post-quantum cryptography before it's too late.
+                Get started with Q in minutes. Protect your sensitive documents with NIST-approved post-quantum cryptography before it&apos;s too late.
               </p>
           </div>
 

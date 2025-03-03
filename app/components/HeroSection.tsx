@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@nextui-org/react";
-import { FaLock, FaArrowRight, FaFileSignature, FaShieldAlt } from "react-icons/fa";
+import { FaArrowRight, FaFileSignature, FaShieldAlt } from "react-icons/fa";
 import { SecurityDashboard } from "./SecurityDashboard";
 import { AnimatedCircuit } from "./AnimatedCircuit";
 import { InstallationDemo } from "./InstallationDemo";

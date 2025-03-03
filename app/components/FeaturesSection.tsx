@@ -63,7 +63,7 @@ export function FeaturesSection() {
               </li>
               <li className="flex items-center">
                 <FaUserShield className="w-4 h-4 mr-3 text-cyan-400" />
-                Defense Against "Harvest Now, Decrypt Later"
+                Defense Against &quot;Harvest Now, Decrypt Later&quot;
               </li>
             </ul>
           </div>

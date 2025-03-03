@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { FaShieldAlt, FaCloud, FaServer, FaNetworkWired, FaKey, FaLock, FaDatabase, FaFileSignature, FaUserShield, FaFileAlt, FaExchangeAlt } from "react-icons/fa";
+import { FaNetworkWired, FaKey, FaLock, FaFileSignature, FaUserShield, FaFileAlt } from "react-icons/fa";
 
 const securityLayers = [
   {

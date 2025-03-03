@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaFileSignature, FaCheck, FaDownload, FaCog, FaKey, FaCode } from "react-icons/fa";
+import { FaFileSignature, FaCheck, FaDownload, FaKey, FaCode } from "react-icons/fa";
 
 const installSteps = [
   {
